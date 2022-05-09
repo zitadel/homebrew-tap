@@ -5,13 +5,13 @@
 class Zitadel < Formula
   desc "Open source identity solution built for the container and cloud era"
   homepage "https://zitadel.ch"
-  version "1.80.0-pref-login-name.1"
+  version "1.80.0-pref-login-name.2"
   license "Apache 2.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/zitadel/zitadel/releases/download/v1.80.0-pref-login-name.1/zitadel_1.80.0-pref-login-name.1_darwin_arm64"
-      sha256 "a9f5e8ddea28f95a5b2b32f4bab3f3aa04f2f54ae881d5daae1affc1cd4fcb01"
+    if Hardware::CPU.intel?
+      url "https://github.com/zitadel/zitadel/releases/download/v1.80.0-pref-login-name.2/zitadel_1.80.0-pref-login-name.2_darwin_amd64"
+      sha256 "2973d7338543212f19e2f21db6f5879e1af068abcd833bc9a3b9bcf19c51f879"
 
       def install
         bin.install "zitadel"
@@ -21,9 +21,9 @@ class Zitadel < Formula
         man1.install "manpages/zitadel.1.gz"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v1.80.0-pref-login-name.1/zitadel_1.80.0-pref-login-name.1_darwin_amd64"
-      sha256 "c01814d517cb9625869603265786431d7400ce7052af0e5d6f2f6e3c90bf2b1c"
+    if Hardware::CPU.arm?
+      url "https://github.com/zitadel/zitadel/releases/download/v1.80.0-pref-login-name.2/zitadel_1.80.0-pref-login-name.2_darwin_arm64"
+      sha256 "feea77c0574438c2bfcd21e8ad67793a8a02d9720eaa77d30d423e029b15744c"
 
       def install
         bin.install "zitadel"
@@ -36,9 +36,9 @@ class Zitadel < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zitadel/zitadel/releases/download/v1.80.0-pref-login-name.1/zitadel_1.80.0-pref-login-name.1_linux_arm64"
-      sha256 "21e7dc96510db5d5eabda8c68757dcd9365a9b426d465bd52a241a32a51edf32"
+    if Hardware::CPU.intel?
+      url "https://github.com/zitadel/zitadel/releases/download/v1.80.0-pref-login-name.2/zitadel_1.80.0-pref-login-name.2_linux_amd64"
+      sha256 "29d59bd104d4bf5f67bb80cb142b9e4e6b49f26e546726877e74d25a7916d491"
 
       def install
         bin.install "zitadel"
@@ -48,9 +48,9 @@ class Zitadel < Formula
         man1.install "manpages/zitadel.1.gz"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v1.80.0-pref-login-name.1/zitadel_1.80.0-pref-login-name.1_linux_amd64"
-      sha256 "58b8ada4a09d3c405b350e8adb7b7424be5da4fa50963c094c7c03d403f9b08e"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/zitadel/zitadel/releases/download/v1.80.0-pref-login-name.2/zitadel_1.80.0-pref-login-name.2_linux_arm64"
+      sha256 "9157995cdb4b2f555fd68195abc703211c6d5ae63d15c7c0a8be517ef9d38c44"
 
       def install
         bin.install "zitadel"
