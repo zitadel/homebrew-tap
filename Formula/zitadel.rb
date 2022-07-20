@@ -5,21 +5,21 @@
 class Zitadel < Formula
   desc "Open source identity solution built for the container and cloud era"
   homepage "https://zitadel.com"
-  version "2.0.0-v2-alpha.42"
+  version "2.0.0-scheduler.3"
   license "Apache 2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.0.0-v2-alpha.42/zitadel_Darwin_x86_64.tar.gz"
-      sha256 "a2708749ec81b46b4caa2550fd564f6eb9d518af2c076b25b2091f2be3595ef3"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.0.0-scheduler.3/zitadel_Darwin_x86_64.tar.gz"
+      sha256 "0e357c53f1210dbb04183bacee11768bfbea6b0d6f03393137576e28cdfc56d7"
 
       def install
         bin.install "zitadel"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.0.0-v2-alpha.42/zitadel_Darwin_arm64.tar.gz"
-      sha256 "e70cca3a4b81ae07e0580c6f23e3698a8916f5fc6e038ea3eb4075daf3727138"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.0.0-scheduler.3/zitadel_Darwin_arm64.tar.gz"
+      sha256 "b2776234a5d596604e9679b0c661bda12d7f3e22dcc6332c2471e125e6e946f1"
 
       def install
         bin.install "zitadel"
@@ -29,16 +29,16 @@ class Zitadel < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.0.0-v2-alpha.42/zitadel_Linux_arm64.tar.gz"
-      sha256 "4f69b8bd47b40e8120d0af8431114a89487bb84f8a7defcf1811a6ec50b1cf44"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.0.0-scheduler.3/zitadel_Linux_arm64.tar.gz"
+      sha256 "a213651e2f1f2b1866a7c9764d923247478a02f3c6c7deed6bd7a64c08226af9"
 
       def install
         bin.install "zitadel"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.0.0-v2-alpha.42/zitadel_Linux_x86_64.tar.gz"
-      sha256 "8df47224ca84798a4a4d103dd679175bf35f0c6a131900a54243658e3329f061"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.0.0-scheduler.3/zitadel_Linux_x86_64.tar.gz"
+      sha256 "343b4ed477f9428956e5579faf6d79d2c27a41f2b67b1109f6ff884f8a983807"
 
       def install
         bin.install "zitadel"
