@@ -5,21 +5,21 @@
 class Zitadel < Formula
   desc "Open source identity solution built for the container and cloud era"
   homepage "https://zitadel.com"
-  version "2.0.1"
+  version "2.1.0"
   license "Apache 2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.0.1/zitadel_Darwin_x86_64.tar.gz"
-      sha256 "9b529e94f21b4be92adf2bac909364c9c5e1ad01cdbe0a9afdee430b86b46981"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.1.0/zitadel_Darwin_x86_64.tar.gz"
+      sha256 "a623a69a358716a66086137850b550466ce7d1871963527095989acc85be6903"
 
       def install
         bin.install "zitadel"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.0.1/zitadel_Darwin_arm64.tar.gz"
-      sha256 "b7c4e5bd758a462c14dfa6e972db9f98c4dec5260c184ad54958b283881a330a"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.1.0/zitadel_Darwin_arm64.tar.gz"
+      sha256 "ff17b3857450791d01c9301162aa9ca9473e94908cbd8b83779001cc1d1c6d09"
 
       def install
         bin.install "zitadel"
@@ -29,16 +29,16 @@ class Zitadel < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.0.1/zitadel_Linux_x86_64.tar.gz"
-      sha256 "d7d7636eb608c404b255bc64dae7bfd7c377bab4e7e058349ce29bc5b514819d"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.1.0/zitadel_Linux_x86_64.tar.gz"
+      sha256 "504656ce7b9179660d2353fca8cbbe9b332d7a40765ba78637709a9935ff465e"
 
       def install
         bin.install "zitadel"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.0.1/zitadel_Linux_arm64.tar.gz"
-      sha256 "53212e0e93a59a863dc060a353fef97b9ad26889977100bd0ca41ed6ac1ca7a7"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.1.0/zitadel_Linux_arm64.tar.gz"
+      sha256 "33189dc78f9ae627bd20b4c4a3d0c532b3f61f60a4df5871641c05ad018fec96"
 
       def install
         bin.install "zitadel"
