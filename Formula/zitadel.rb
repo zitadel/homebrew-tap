@@ -5,24 +5,24 @@
 class Zitadel < Formula
   desc "Open source identity solution built for the container and cloud era"
   homepage "https://zitadel.com"
-  version "2.6.0"
+  version "2.7.0"
   license "Apache 2.0"
 
   depends_on "go" => :optional
   depends_on "git"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.6.0/zitadel_Darwin_arm64.tar.gz"
-      sha256 "75fc6a533ba3879180ab6e381d08b432324ecdf58a84e8f053958c31bf262c39"
+    if Hardware::CPU.intel?
+      url "https://github.com/zitadel/zitadel/releases/download/v2.7.0/zitadel_Darwin_x86_64.tar.gz"
+      sha256 "7e0752a7896e6092fbe4e6191d740127609801d632dae4f8f6d78f9ede729d56"
 
       def install
         bin.install "zitadel"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.6.0/zitadel_Darwin_x86_64.tar.gz"
-      sha256 "7891f6fcc95f6488821fd65229595d176aa7d807de893221840c12955f06e211"
+    if Hardware::CPU.arm?
+      url "https://github.com/zitadel/zitadel/releases/download/v2.7.0/zitadel_Darwin_arm64.tar.gz"
+      sha256 "2b281f61ee2ddb31e77df0fa36c046eb8328b3d928ebe62d93866b9d544936b4"
 
       def install
         bin.install "zitadel"
@@ -31,17 +31,17 @@ class Zitadel < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.6.0/zitadel_Linux_arm64.tar.gz"
-      sha256 "7a39adb4bb7cbe8b2ebdcdd398966c7d5acbb620f7c16323dfd634e8754d8747"
+    if Hardware::CPU.intel?
+      url "https://github.com/zitadel/zitadel/releases/download/v2.7.0/zitadel_Linux_x86_64.tar.gz"
+      sha256 "17944d37bb3c0ec358697f9ab00dc137fcdc667425e7d24531a651f8680a61ab"
 
       def install
         bin.install "zitadel"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.6.0/zitadel_Linux_x86_64.tar.gz"
-      sha256 "dbf5b5b92fa0f8f8e4f29b729873c50cbc551b4e993dc5b87190f5ddc299a012"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/zitadel/zitadel/releases/download/v2.7.0/zitadel_Linux_arm64.tar.gz"
+      sha256 "91f8a2599897a8d105166d90c495b07ba9813794c307216ca158b3169da1a91c"
 
       def install
         bin.install "zitadel"
