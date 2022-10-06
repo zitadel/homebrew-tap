@@ -12,17 +12,17 @@ class Zitadel < Formula
   depends_on "git"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.8.0/zitadel_Darwin_x86_64.tar.gz"
-      sha256 "a2940e2895f132c1ee3d42b76397fe44ec0aa34e41a0c3309b52a28a9f96b38e"
+    if Hardware::CPU.arm?
+      url "https://github.com/zitadel/zitadel/releases/download/v2.8.0/zitadel_Darwin_arm64.tar.gz"
+      sha256 "a11cb471c4d5667822e960bc48692cc34625a48c0eb14a45f82a89a2f9a46cf9"
 
       def install
         bin.install "zitadel"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.8.0/zitadel_Darwin_arm64.tar.gz"
-      sha256 "4205b01ecb8f0785d776a93f034dcd4991ae172e76a958147feedca155d9392a"
+    if Hardware::CPU.intel?
+      url "https://github.com/zitadel/zitadel/releases/download/v2.8.0/zitadel_Darwin_x86_64.tar.gz"
+      sha256 "88e3c970b2d6107e2fc8662e09b99da2ed735faaa059d72d11e54a171ba22520"
 
       def install
         bin.install "zitadel"
@@ -33,7 +33,7 @@ class Zitadel < Formula
   on_linux do
     if Hardware::CPU.intel?
       url "https://github.com/zitadel/zitadel/releases/download/v2.8.0/zitadel_Linux_x86_64.tar.gz"
-      sha256 "6cd10dfa879c78bdfdb0b6c436334ef05e48e76c7978d8b7f66ded4243ae779b"
+      sha256 "7022b0370feecdfb7b4638d1055f32ec2182c8ff8cdcbb0cef8a17be1b0bdaf7"
 
       def install
         bin.install "zitadel"
@@ -41,7 +41,7 @@ class Zitadel < Formula
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://github.com/zitadel/zitadel/releases/download/v2.8.0/zitadel_Linux_arm64.tar.gz"
-      sha256 "1264b05d03948270d64352ae004e14e74959662806da167592798d29e1c9f180"
+      sha256 "3c544d3050033015593e506b7b3fae4be299f99fa2e84b5bef2f8d7235147f4d"
 
       def install
         bin.install "zitadel"
