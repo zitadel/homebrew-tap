@@ -5,7 +5,7 @@
 class Zitadel < Formula
   desc "Open source identity solution built for the container and cloud era"
   homepage "https://zitadel.com"
-  version "2.25.5"
+  version "2.26.0"
   license "Apache 2.0"
 
   depends_on "go" => :optional
@@ -13,16 +13,16 @@ class Zitadel < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.25.5/zitadel_Darwin_x86_64.tar.gz"
-      sha256 "39c5e1c557c515fcc20298b3c987d9e8f66e839916717cb750240e559ae75d66"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.26.0/zitadel_Darwin_x86_64.tar.gz"
+      sha256 "bc2ff8028aa5f819d6fc508d305a08334bf7c13b486730f7eccfd9b0c8a92abe"
 
       def install
         bin.install "zitadel"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.25.5/zitadel_Darwin_arm64.tar.gz"
-      sha256 "4ea99f7454024523480bf766ed5983bc4c004de5602a9094a4d1045b23a173a0"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.26.0/zitadel_Darwin_arm64.tar.gz"
+      sha256 "7289ebbc0673f85e54905d6c5b13a78b67c5db0e769d921b8fa6ae45dba2a0de"
 
       def install
         bin.install "zitadel"
@@ -32,16 +32,16 @@ class Zitadel < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.25.5/zitadel_Linux_arm64.tar.gz"
-      sha256 "5e8e1cadf8a1f33e6e41cecdbc2cdf04d982a372808f0a73706c771e204ff183"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.26.0/zitadel_Linux_arm64.tar.gz"
+      sha256 "3f5d13a20c5c9670f924ac2c91560c2f84b4f07b0012cc10b4eefccbc470049f"
 
       def install
         bin.install "zitadel"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v2.25.5/zitadel_Linux_x86_64.tar.gz"
-      sha256 "2d3e472cdac89fa33734edca41207eb4b78b23b275f159841201abf13a1d6b05"
+      url "https://github.com/zitadel/zitadel/releases/download/v2.26.0/zitadel_Linux_x86_64.tar.gz"
+      sha256 "bb82323ee40a773b034d770945809313f696a26042ff90a2d7eeb806612609fb"
 
       def install
         bin.install "zitadel"
