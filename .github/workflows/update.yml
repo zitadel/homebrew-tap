@@ -1,0 +1,14 @@
+name: Update ZITADEL version
+
+on:
+  repository_dispatch:
+
+jobs:
+  print:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: print
+        run: |
+          echo ${{ github.event.client_payload }}\n
+          echo ${{ github.event.client_payload.version }}\n
+          echo ${{ github.event.client_payload.runId }}\n
