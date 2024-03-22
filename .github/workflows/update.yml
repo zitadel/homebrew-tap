@@ -37,3 +37,20 @@ jobs:
           echo ${{ github.event.client_payload }}\n
           echo ${{ github.event.client_payload.version }}\n
           echo ${{ github.event.client_payload.runId }}\n
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            Formula/zitadel.rb
+            .template/zitadel.rb
+      - name: fill template
+        env:
+          VERSION: ${{ github.event.inputs.version }}
+        run: |
+          sed \
+            -e "s/__VERSION__/${VERSION}/g" \
+            -e "s/__DARWIN_ARM64_SUM__/$(awk '/zitadel-darwin-arm64.tar.gz/ {print $1}' tmp/checksums.txt)/g" \
+            -e "s/__DARWIN_X86_64_SUM__/$(awk '/zitadel-darwin-amd64.tar.gz/ {print $1}' tmp/checksums.txt)/g" \
+            -e "s/__LINUX_ARM64_SUM__/$(awk '/zitadel-linux-arm64.tar.gz/ {print $1}' tmp/checksums.txt)/g" \
+            -e "s/__LINUX_X86_64_SUM__/$(awk '/zitadel-linux-amd64.tar.gz/ {print $1}' tmp/checksums.txt)/g" \
+            .template/zitadel.rb

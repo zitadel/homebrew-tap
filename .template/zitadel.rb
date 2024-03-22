@@ -13,7 +13,7 @@ class Zitadel < Formula
   
     on_macos do
       if Hardware::CPU.arm?
-        url "https://github.com/zitadel/zitadel/releases/download/__VERSION__/zitadel_Darwin_arm64.tar.gz"
+        url "https://github.com/zitadel/zitadel/releases/download/__VERSION__/zitadel_darwin_arm64.tar.gz"
         sha256 "__DARWIN_ARM64_SUM__"
   
         def install
@@ -21,7 +21,7 @@ class Zitadel < Formula
         end
       end
       if Hardware::CPU.intel?
-        url "https://github.com/zitadel/zitadel/releases/download/__VERSION__/zitadel_Darwin_x86_64.tar.gz"
+        url "https://github.com/zitadel/zitadel/releases/download/__VERSION__/zitadel_darwin_x86_64.tar.gz"
         sha256 "__DARWIN_X86_64_SUM__"
   
         def install
@@ -32,7 +32,7 @@ class Zitadel < Formula
   
     on_linux do
       if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-        url "https://github.com/zitadel/zitadel/releases/download/__VERSION__/zitadel_Linux_arm64.tar.gz"
+        url "https://github.com/zitadel/zitadel/releases/download/__VERSION__/zitadel_linux_arm64.tar.gz"
         sha256 "__LINUX_ARM64_SUM__"
   
         def install
@@ -40,7 +40,7 @@ class Zitadel < Formula
         end
       end
       if Hardware::CPU.intel?
-        url "https://github.com/zitadel/zitadel/releases/download/__VERSION__/zitadel_Linux_x86_64.tar.gz"
+        url "https://github.com/zitadel/zitadel/releases/download/__VERSION__/zitadel_linux_x86_64.tar.gz"
         sha256 "__LINUX_X86_64_SUM__"
   
         def install
