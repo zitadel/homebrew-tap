@@ -78,6 +78,8 @@ jobs:
         env:
           VERSION: ${{ needs.variables.outputs.version }}
         run: |
+          git config --global user.email "homebrew-tap@zitadel.com"
+          git config --global user.name "Formula updater"
           git add Formula/zitadel.rb
           git commit -m"update formula to ${VERSION}"
           git push
