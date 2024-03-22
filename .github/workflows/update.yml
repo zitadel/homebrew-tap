@@ -2,11 +2,31 @@ name: Update ZITADEL version
 
 on:
   repository_dispatch:
+  workflow_dispatch: 
+    inputs:
+      version:
+        default: v2.48.1
+        type: string
+      runId:
+        default: 8374553520
+        type: number
 
 jobs:
   print:
     runs-on: ubuntu-22.04
     steps:
+      - 
+        name: download sums
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          name: checksums.txt
+          run-id: ${{ github.event.inputs.runId }}
+          repository: zitadel/zitadel
+          path: ./tmp
+      - 
+        name: show
+        run: ls -R
       - name: print
         run: |
           echo ${{ github.event }}\n  
