@@ -2,8 +2,8 @@ name: Update ZITADEL version
 
 on:
   repository_dispatch:
-    # types:
-    #   - update-formula
+    types:
+      - update-formula
   workflow_dispatch: 
     inputs:
       version:
@@ -29,10 +29,8 @@ jobs:
             echo "RUN_ID=${{ github.event.inputs.runId }}" >> $GITHUB_OUTPUT
           elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
             echo "Triggered by repository_dispatch"
-            echo "${{github.event}}"
             echo "VERSION=${{ github.event.client_payload.version }}" >> $GITHUB_OUTPUT
             echo "RUN_ID=${{ github.event.client_payload.runId }}" >> $GITHUB_OUTPUT
-            exit 1
           else
             echo "Unknown trigger type"
             exit 1
