@@ -15,6 +15,19 @@ jobs:
   print:
     runs-on: ubuntu-22.04
     steps:
+      - name: print
+        run: |
+          echo ${{ github.event }}\n  
+          echo ======================================================\n
+          echo ${{ github.event.client_payload }}\n
+          echo ${{ github.event.client_payload.version }}\n
+          echo ${{ github.event.client_payload.runId }}\n
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            Formula/zitadel.rb
+            .template/zitadel.rb
       - 
         name: download sums
         uses: actions/download-artifact@v4
@@ -30,19 +43,6 @@ jobs:
       -
         name: cat
         run: cat ./tmp/checksums.txt
-      - name: print
-        run: |
-          echo ${{ github.event }}\n  
-          echo ======================================================\n
-          echo ${{ github.event.client_payload }}\n
-          echo ${{ github.event.client_payload.version }}\n
-          echo ${{ github.event.client_payload.runId }}\n
-      - name: checkout
-        uses: actions/checkout@v4
-        with:
-          sparse-checkout: |
-            Formula/zitadel.rb
-            .template/zitadel.rb
       - name: fill template
         env:
           VERSION: ${{ github.event.inputs.version }}
