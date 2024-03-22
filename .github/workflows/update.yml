@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: print
         run: |
+          echo ${{ github.event }}\n  
+          echo ======================================================\n
           echo ${{ github.event.client_payload }}\n
           echo ${{ github.event.client_payload.version }}\n
           echo ${{ github.event.client_payload.runId }}\n
