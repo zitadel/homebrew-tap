@@ -2,51 +2,70 @@ name: Update ZITADEL version
 
 on:
   repository_dispatch:
+    types:
+      - update-formula
   workflow_dispatch: 
     inputs:
       version:
         default: v2.48.1
         type: string
       runId:
-        default: 8374553520
+        required: true
         type: number
 
 jobs:
+  variables:
+    runs-on: ubuntu-22.04
+    outputs:
+      version: ${{ steps.set.outputs.VERSION }}
+      run_id: ${{ steps.set.outputs.RUN_ID }}
+    steps:
+      - name: from event type
+        id: set
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "Triggered by workflow_dispatch"
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+            echo "RUN_ID=${{ github.event.inputs.runId }}" >> $GITHUB_OUTPUT
+          elif [ "${{ github.event_name }}" == "repository_dispatch" ]; then
+            echo "Triggered by repository_dispatch"
+            echo "VERSION=${{ github.event.client_payload.version }}" >> $GITHUB_OUTPUT
+            echo "RUN_ID=${{ github.event.client_payload.runId }}" >> $GITHUB_OUTPUT
+          else
+            echo "Unknown trigger type"
+            exit 1
+          fi
+      - name: verify output
+        env:
+          VERSION: ${{ steps.set.outputs.VERSION }}
+          RUN_ID: ${{ steps.set.outputs.RUN_ID }}
+        run: |
+          if [[ -z $VERSION ]]; then echo "version not set" && exit 1; else echo "update version to ${VERSION}"; fi
+          if [[ -z $RUN_ID ]]; then echo "run id not set" && exit 1; else echo "using run id ${RUN_ID}"; fi
+
   print:
     runs-on: ubuntu-22.04
+    needs: variables
     steps:
-      - name: print
-        run: |
-          echo ${{ github.event }}\n  
-          echo ======================================================\n
-          echo ${{ github.event.client_payload }}\n
-          echo ${{ github.event.client_payload.version }}\n
-          echo ${{ github.event.client_payload.runId }}\n
       - name: checkout
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
             Formula/zitadel.rb
             .template/zitadel.rb
-      - 
-        name: download sums
+      - name: download sums
         uses: actions/download-artifact@v4
         with:
           github-token: ${{ github.token }}
           name: checksums.txt
-          run-id: ${{ github.event.inputs.runId }}
+          run-id: ${{ needs.variables.outputs.run_id }}
           repository: zitadel/zitadel
           path: ./tmp
-      - 
-        name: show
-        run: ls -R
-      -
-        name: cat
-        run: cat ./tmp/checksums.txt
       - name: fill template
         env:
-          VERSION: ${{ github.event.inputs.version }}
+          VERSION: ${{ needs.variables.outputs.version }}
         run: |
+          if [[ -z $VERSION ]]; then echo "version not set" && exit 1; else echo "update version to ${VERSION}"; fi
           sed \
             -e "s/__VERSION__/${VERSION}/g" \
             -e "s/__DARWIN_ARM64_SUM__/$(awk '/zitadel-darwin-arm64.tar.gz/ {print $1}' ./tmp/checksums.txt)/g" \
