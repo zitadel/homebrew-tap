@@ -27,6 +27,9 @@ jobs:
       - 
         name: show
         run: ls -R
+      -
+        name: cat
+        run: cat ./tmp/checksums.txt
       - name: print
         run: |
           echo ${{ github.event }}\n  
