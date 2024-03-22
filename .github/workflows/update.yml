@@ -7,7 +7,7 @@ on:
   workflow_dispatch: 
     inputs:
       version:
-        default: v2.48.1
+        required: true
         type: string
       runId:
         required: true
@@ -55,13 +55,14 @@ jobs:
             .template/zitadel.rb
       - name: download sums
         uses: actions/download-artifact@v4
+        timeout-minutes: 1
         with:
           github-token: ${{ github.token }}
           name: checksums.txt
           run-id: ${{ needs.variables.outputs.run_id }}
           repository: zitadel/zitadel
           path: ./tmp
-      - name: fill template
+      - name: update formula
         env:
           VERSION: ${{ needs.variables.outputs.version }}
         run: |
@@ -72,4 +73,11 @@ jobs:
             -e "s/__DARWIN_X86_64_SUM__/$(awk '/zitadel-darwin-amd64.tar.gz/ {print $1}' ./tmp/checksums.txt)/g" \
             -e "s/__LINUX_ARM64_SUM__/$(awk '/zitadel-linux-arm64.tar.gz/ {print $1}' ./tmp/checksums.txt)/g" \
             -e "s/__LINUX_X86_64_SUM__/$(awk '/zitadel-linux-amd64.tar.gz/ {print $1}' ./tmp/checksums.txt)/g" \
-            .template/zitadel.rb
+            .template/zitadel.rb > Formula/zitadel.rb
+      - name: push
+        env:
+          VERSION: ${{ needs.variables.outputs.version }}
+        run: |
+          git add Formula/zitadel.rb
+          git commit -m"update formula to ${VERSION}"
+          git push
