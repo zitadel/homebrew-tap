@@ -5,7 +5,7 @@
 class Zitadel < Formula
   desc "Open source identity solution built for the container and cloud era"
   homepage "https://zitadel.com"
-  version "v4.3.1"
+  version "v4.13.0"
   license "Apache 2.0"
 
   depends_on "go" => :optional
@@ -13,16 +13,16 @@ class Zitadel < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/zitadel/zitadel/releases/download/v4.3.1/zitadel-darwin-arm64.tar.gz"
-      sha256 "4660873a128f2e7789864d3a37d421a02b472486e213777a03b79d11865c5208"
+      url "https://github.com/zitadel/zitadel/releases/download/v4.13.0/zitadel-darwin-arm64.tar.gz"
+      sha256 ""
 
       def install
         bin.install "zitadel"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v4.3.1/zitadel-darwin-amd64.tar.gz"
-      sha256 "9f4ee61ccf814ed4b37a5aa14de559be51c11042098205192d7a6d0d78feb48a"
+      url "https://github.com/zitadel/zitadel/releases/download/v4.13.0/zitadel-darwin-amd64.tar.gz"
+      sha256 ""
 
       def install
         bin.install "zitadel"
@@ -32,16 +32,16 @@ class Zitadel < Formula
   
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/zitadel/zitadel/releases/download/v4.3.1/zitadel-linux-arm64.tar.gz"
-      sha256 "9548546ae3adf2f1cdc696bf30f7273df82ee4c09b6d993ca7ea7f24caf4e55f"
+      url "https://github.com/zitadel/zitadel/releases/download/v4.13.0/zitadel-linux-arm64.tar.gz"
+      sha256 ""
 
       def install
         bin.install "zitadel"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/zitadel/zitadel/releases/download/v4.3.1/zitadel-linux-amd64.tar.gz"
-      sha256 "eca5979504eea9c3c713de2399bcb1251c82f60520db5e7da07c4ad2a6ed2810"
+      url "https://github.com/zitadel/zitadel/releases/download/v4.13.0/zitadel-linux-amd64.tar.gz"
+      sha256 ""
 
       def install
         bin.install "zitadel"
