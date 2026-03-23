@@ -58,7 +58,7 @@ jobs:
         timeout-minutes: 1
         with:
           github-token: ${{ github.token }}
-          name: checksums.txt
+          name: zitadel-archives/checksums.txt
           run-id: ${{ needs.variables.outputs.run_id }}
           repository: zitadel/zitadel
           path: ./tmp
@@ -69,10 +69,10 @@ jobs:
           if [[ -z $VERSION ]]; then echo "version not set" && exit 1; else echo "update version to ${VERSION}"; fi
           sed \
             -e "s/__VERSION__/${VERSION}/g" \
-            -e "s/__DARWIN_ARM64_SUM__/$(awk '/zitadel-darwin-arm64.tar.gz/ {print $1}' ./tmp/checksums.txt)/g" \
-            -e "s/__DARWIN_AMD64_SUM__/$(awk '/zitadel-darwin-amd64.tar.gz/ {print $1}' ./tmp/checksums.txt)/g" \
-            -e "s/__LINUX_ARM64_SUM__/$(awk '/zitadel-linux-arm64.tar.gz/ {print $1}' ./tmp/checksums.txt)/g" \
-            -e "s/__LINUX_AMD64_SUM__/$(awk '/zitadel-linux-amd64.tar.gz/ {print $1}' ./tmp/checksums.txt)/g" \
+            -e "s/__DARWIN_ARM64_SUM__/$(awk '/zitadel-darwin-arm64.tar.gz/ {print $1}' ./tmp/zitadel-archives/checksums.txt)/g" \
+            -e "s/__DARWIN_AMD64_SUM__/$(awk '/zitadel-darwin-amd64.tar.gz/ {print $1}' ./tmp/zitadel-archives/checksums.txt)/g" \
+            -e "s/__LINUX_ARM64_SUM__/$(awk '/zitadel-linux-arm64.tar.gz/ {print $1}' ./tmp/zitadel-archives/checksums.txt)/g" \
+            -e "s/__LINUX_AMD64_SUM__/$(awk '/zitadel-linux-amd64.tar.gz/ {print $1}' ./tmp/zitadel-archives/checksums.txt)/g" \
             .template/zitadel.rb > Formula/zitadel.rb
       - name: push
         env:
