@@ -58,7 +58,7 @@ jobs:
         timeout-minutes: 1
         with:
           github-token: ${{ github.token }}
-          name: zitadel-archives/checksums.txt
+          name: zitadel-archives
           run-id: ${{ needs.variables.outputs.run_id }}
           repository: zitadel/zitadel
           path: ./tmp
